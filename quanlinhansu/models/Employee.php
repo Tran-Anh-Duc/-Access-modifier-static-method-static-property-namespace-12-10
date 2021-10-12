@@ -1,10 +1,10 @@
 <?php
 class Employee{
-    private $firstName;
-    private $lastName;
-    private $birthDate;
-    private $address;
-    private $jobTitle;
+    public string $firstName;
+    public string $lastName;
+    public string $birthDate;
+    public string $address;
+    public string $jobTitle;
 
     /**
      * @param $firstName
@@ -22,86 +22,69 @@ class Employee{
         $this->jobTitle = $jobTitle;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getFirstName()
+
+    public function getFirstName(): string
     {
         return $this->firstName;
     }
 
-    /**
-     * @param mixed $firstName
-     */
+
     public function setFirstName($firstName): void
     {
         $this->firstName = $firstName;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getLastName()
+
+    public function getLastName(): string
     {
         return $this->lastName;
     }
 
-    /**
-     * @param mixed $lastName
-     */
+
     public function setLastName($lastName): void
     {
         $this->lastName = $lastName;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getBirthDate()
+
+    public function getBirthDate(): string
     {
         return $this->birthDate;
     }
 
-    /**
-     * @param mixed $birthDate
-     */
+
     public function setBirthDate($birthDate): void
     {
         $this->birthDate = $birthDate;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getAddress()
+
+    public function getAddress(): string
     {
         return $this->address;
     }
 
-    /**
-     * @param mixed $address
-     */
+
     public function setAddress($address): void
     {
         $this->address = $address;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getJobTitle()
+
+    public function getJobTitle(): string
     {
         return $this->jobTitle;
     }
 
-    /**
-     * @param mixed $jobTitle
-     */
+
     public function setJobTitle($jobTitle): void
     {
         $this->jobTitle = $jobTitle;
     }
 
-
+    public function getFullName(): string
+    {
+        return $this->firstName ." ". $this->lastName;
+    }
 
 }

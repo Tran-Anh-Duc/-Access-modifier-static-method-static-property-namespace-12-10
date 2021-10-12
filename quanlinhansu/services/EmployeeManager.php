@@ -2,17 +2,17 @@
 include "../models/Employee.php";
 class EmployeeManager
 {
-    private $employees;
-    private $path=__DIR__."/employee.json";
+    private array $employees;
+    private string $path=__DIR__."/employee.json";
 
     public function __construct()
     {
-        $this->employees = [];
+        $this->employees = $this->load();
     }
 
     //hien thi danh sach nhan su
 
-    public function getAllEmployees()
+    public function getAllEmployees(): array
     {
         return $this->employees;
     }
@@ -22,8 +22,18 @@ class EmployeeManager
     public function storeEmployees($employee)
     {
     array_push($this->employees,$employee);
+    $this->save();
     }
-    
+
+    // xem thong tin chi tiet tung nhan vien
+
+    public function getEmployeeById($id)
+    {
+        return $this->employees[$id];
+    }
+
+
+
     
     //lu du lieu vao db
     public function save()
@@ -32,11 +42,11 @@ class EmployeeManager
         file_put_contents($dataJson);
     }
 
-    public function load()
+    public function load(): array
     {
         $dataJson = file_get_contents($this->path);
         $data=json_decode($dataJson,true);
-
+        return $this->convertToObject($data);
     }
 
     public function convertToObject($data)
@@ -46,7 +56,6 @@ class EmployeeManager
             $employee = new Employee($e["firstName"],$e["lastName"],$e["birthDate"],$e["address"],$e["jobTitle"]);
             $employees[] = $employee; /// array_push
         }
-        $this->showLog($data);
         return$employees;
     }
 
