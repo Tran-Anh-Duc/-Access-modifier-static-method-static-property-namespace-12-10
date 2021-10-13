@@ -18,6 +18,7 @@ class EmployeeManager
         return $this->employees;
     }
 
+
     //them nhan su moi
 
     public function storeEmployees($employee)
@@ -34,8 +35,15 @@ class EmployeeManager
         return $this->employees[$id];
     }
 
+    //xoa mot nhan su
+    public function deleteEmplyeeById($id)
+    {
+        array_splice($this->employees,$id,1);
+        $this->save();
 
-    //lu du lieu vao db
+    }
+
+    //luu du lieu vao db
     public function save()
     {
         $dataJson = json_encode($this->employees);

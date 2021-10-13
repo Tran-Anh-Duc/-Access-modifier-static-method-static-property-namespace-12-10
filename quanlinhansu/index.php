@@ -48,6 +48,9 @@ $employees = $employeeManager->getAllEmployees();
             <td>
                 <a href="employee-detail.php?id=<?php echo $key ?>">Detail</a>
             </td>
+            <td>
+                <a onclick="return confirm('ban co muon xoa khong')" href="ddelete-employee.php?id=<?php echo $key ?>">delete</a>
+            </td>
         </tr>
     <?php endforeach; ?>
     </tbody>
