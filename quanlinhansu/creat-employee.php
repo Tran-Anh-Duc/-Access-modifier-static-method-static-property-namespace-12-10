@@ -76,8 +76,8 @@
 </body>
 </html>
 <?php
-include "models/Employee.php";
-include "services/EmployeeManager.php";
+include_once "models/Employee.php";
+include_once "services/EmployeeManager.php";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $employee = [

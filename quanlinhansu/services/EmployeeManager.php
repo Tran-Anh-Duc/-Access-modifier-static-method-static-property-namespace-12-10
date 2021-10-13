@@ -1,5 +1,5 @@
 <?php
-include "../models/Employee.php";
+include_once "../models/Employee.php";
 
 class EmployeeManager
 {
@@ -23,6 +23,7 @@ class EmployeeManager
     public function storeEmployees($employee)
     {
         array_push($this->employees, $employee);
+
         $this->save();
     }
 
