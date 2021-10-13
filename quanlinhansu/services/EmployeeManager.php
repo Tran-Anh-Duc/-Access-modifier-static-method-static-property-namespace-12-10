@@ -1,9 +1,10 @@
 <?php
 include "../models/Employee.php";
+
 class EmployeeManager
 {
     private array $employees;
-    private string $path=__DIR__."/employee.json";
+    private string $path = __DIR__ . "/employee.json";
 
     public function __construct()
     {
@@ -21,8 +22,8 @@ class EmployeeManager
 
     public function storeEmployees($employee)
     {
-    array_push($this->employees,$employee);
-    $this->save();
+        array_push($this->employees, $employee);
+        $this->save();
     }
 
     // xem thong tin chi tiet tung nhan vien
@@ -33,30 +34,28 @@ class EmployeeManager
     }
 
 
-
-    
     //lu du lieu vao db
     public function save()
     {
         $dataJson = json_encode($this->employees);
-        file_put_contents($dataJson);
+        file_put_contents($this->path, $dataJson);
     }
 
     public function load(): array
     {
         $dataJson = file_get_contents($this->path);
-        $data=json_decode($dataJson,true);
+        $data = json_decode($dataJson, true);
         return $this->convertToObject($data);
     }
 
-    public function convertToObject($data)
+    public function convertToObject($data): array
     {
         $employees = [];
-        foreach ($data as $e){
-            $employee = new Employee($e["firstName"],$e["lastName"],$e["birthDate"],$e["address"],$e["jobTitle"]);
+        foreach ($data as $e) {
+            $employee = new Employee($e["firstName"], $e["lastName"], $e["birthDate"], $e["address"], $e["jobTitle"]);
             $employees[] = $employee; /// array_push
         }
-        return$employees;
+        return $employees;
     }
 
     public function showLog($data)

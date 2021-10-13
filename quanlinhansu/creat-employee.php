@@ -62,8 +62,8 @@
         <label for="address">Address</label>
         <input type="text" id="address" name="address" placeholder="Your name..">
 
-        <label for="thanhpho">Thanh Pho</label>
-        <select id="thanhpho" name="thanhpho">
+        <label for="job">Thanh Pho</label>
+        <select id="job" name="job">
             <option value="australia">Ha Noi</option>
             <option value="canada">Ha Nam</option>
             <option value="usa">Ha Tinh</option>
@@ -73,14 +73,11 @@
         <a href="index.php">Back</a>
     </form>
 </div>
-
-
 </body>
 </html>
 <?php
 include "models/Employee.php";
 include "services/EmployeeManager.php";
-
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $employee = [
@@ -93,6 +90,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $employeeManager = new EmployeeManager();
     $employeeManager->storeEmployees($employee);
-    header("Location:index.php");
+//    header("Location:index.php");
 }
-?>
